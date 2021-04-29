@@ -1,0 +1,1 @@
+newman run Prueba_Indra.postman_collection.json -n 5 -r htmlextra

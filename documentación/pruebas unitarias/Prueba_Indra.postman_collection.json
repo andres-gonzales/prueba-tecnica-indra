@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "205149a6-6ee3-4eb7-99cd-3780cf47fdeb",
+		"name": "Prueba Indra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar personas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Lista personas\", function(){\r",
+							"    var listaPersonas = pm.response.json().personas;\r",
+							"    pm.expect(listaPersonas).to.be.an(\"array\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wa32j6zkui.execute-api.us-east-1.amazonaws.com/dev/personas",
+					"protocol": "https",
+					"host": [
+						"wa32j6zkui",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"personas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar persona con id 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Agregar persona id no numerico\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wa32j6zkui.execute-api.us-east-1.amazonaws.com/dev/persona/registrar/1",
+					"protocol": "https",
+					"host": [
+						"wa32j6zkui",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"persona",
+						"registrar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar persona con id 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Agregar persona id no numerico\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wa32j6zkui.execute-api.us-east-1.amazonaws.com/dev/persona/registrar/2",
+					"protocol": "https",
+					"host": [
+						"wa32j6zkui",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"persona",
+						"registrar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar persona con id fuera del rango del api",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Agregar persona id fuera del rango\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"    pm.expect(jsonData.error).to.eql(\"Error al registrar persona\");\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wa32j6zkui.execute-api.us-east-1.amazonaws.com/dev/persona/registrar/90",
+					"protocol": "https",
+					"host": [
+						"wa32j6zkui",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"persona",
+						"registrar",
+						"90"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar persona con id no numérico Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Agregar persona id no numerico\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");\r",
+							"    pm.expect(jsonData.error).to.eql(\"Error al registrar persona\");\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wa32j6zkui.execute-api.us-east-1.amazonaws.com/dev/persona/registrar/prueba",
+					"protocol": "https",
+					"host": [
+						"wa32j6zkui",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"persona",
+						"registrar",
+						"prueba"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
